@@ -1,3 +1,14 @@
+const express = require("express");
+const app = express();
+
+const PORT = 3000;
+
+// will share any static html files with the browser
+app.use(express.static("html"));
+// accept incoming POST requests
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 const $noteTitle = $(".note-title");
 const $noteText = $(".note-textarea");
 const $saveNoteBtn = $(".save-note");
@@ -8,12 +19,9 @@ const $noteList = $(".list-container .list-group");
 let activeNote = {};
 
 // A function for getting all notes from the db
-const getNotes = () => {
-  return $.ajax({
-    url: "/api/notes",
-    method: "GET",
-  });
-};
+app.get("/api/notes", function (req, res) {
+  res.send(activeNote);
+});
 
 // A function for saving a note to the db
 const saveNote = (note) => {
