@@ -4,6 +4,23 @@ html, body {
   padding: 0;
 }
 
+.card-background {
+  position: absolute;
+  left: 0px; top: 0px;
+  opacity: 0.4;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none; /* else image blocks bubbling?! */
+}
+.card-background IMG {
+  background-size: fit;			
+  width: 100%;
+  height: 100%;
+}
+
+
+
 .save-note {
   display: none;
 }
