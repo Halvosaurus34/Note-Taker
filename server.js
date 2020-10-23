@@ -10,14 +10,6 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-class NewNote {
-  constructor(id, title, text) {
-    this.id = id;
-    this.title = title;
-    this.text = text;
-  }
-}
-
 const dbFile = "./app/db.json";
 let readNoteList = JSON.parse(fs.readFileSync(dbFile, "utf8"));
 let id = 0;
@@ -47,7 +39,6 @@ app.post("/api/notes", async function (req, res) {
   noteList.push(newNote);
   //   console.log("NOTE ARRAY: ", noteList);
   fs.writeFileSync(dbFile, JSON.stringify(noteList));
-  id++;
   console.log("Successfully added new note...");
   res.send({ message: "added note..." });
 });
@@ -65,9 +56,6 @@ app.delete("/api/notes/:id", async function (req, res) {
     }
   });
   res.send({ message: "deleted" });
-});
-app.get("/", function (req, res) {
-  res.json(path.join(__dirname, "public/index.html"));
 });
 // you will need to create 3 endpoints here, and it should work magically :)
 // note: for app.post: newNote.id = uuid.v4() // use a random unique id.
