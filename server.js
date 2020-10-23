@@ -3,8 +3,7 @@ const uuid = require("uuid");
 const app = express();
 const fs = require("fs");
 
-const PORT = 3000; // process.env.PORT ?
-
+var PORT = process.env.PORT || 3001;
 // will share any static html files with the browser
 app.use(express.static("public"));
 // accept incoming POST requests
@@ -67,7 +66,9 @@ app.delete("/api/notes/:id", async function (req, res) {
   });
   res.send({ message: "deleted" });
 });
-
+app.get("/", function (req, res) {
+  res.json(path.join(__dirname, "public/index.html"));
+});
 // you will need to create 3 endpoints here, and it should work magically :)
 // note: for app.post: newNote.id = uuid.v4() // use a random unique id.
 // ... code away ...
