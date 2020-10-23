@@ -28,7 +28,7 @@ let noteList = [
 
 // Endpoints =================================================
 app.get("/api/notes", async function (req, res) {
-  console.log("getting data...", readNoteList[0]);
+  console.log("getting data...");
   res.send(readNoteList);
 });
 
@@ -41,15 +41,33 @@ app.post("/api/notes", async function (req, res) {
       this.text = text;
     }
   }
-
+  let noteList = [];
   let newNote = new NewNote(uuid.v4(), req.body.title, req.body.text);
-  console.log("NEWNOTE: ", newNote);
+  //   console.log("NEWNOTE: ", newNote);
+  noteList = readNoteList;
   noteList.push(newNote);
-  console.log("NOTE ARRAY: ", noteList);
+  //   console.log("NOTE ARRAY: ", noteList);
   fs.writeFileSync(dbFile, JSON.stringify(noteList));
   id++;
+  console.log("Successfully added new note...");
   res.send({ message: "added note..." });
 });
+
+app.delete("/api/notes/:id", async function (req, res) {
+  //   console.log("DELETED NOTE REQUEST ID: ", req.params.id);
+  let result = readNoteList.map(function (el) {
+    if (el.id == req.params.id) {
+      //   console.log(`Matched search id: ${req.params.id} with db id: ${el.id}`);
+      readNoteList.splice(readNoteList.indexOf(el), 1);
+      fs.writeFileSync(dbFile, JSON.stringify(readNoteList));
+      console.log("Delete Successfull...");
+    } else {
+      console.log("Unable to find that id!");
+    }
+  });
+  res.send({ message: "deleted" });
+});
+
 // you will need to create 3 endpoints here, and it should work magically :)
 // note: for app.post: newNote.id = uuid.v4() // use a random unique id.
 // ... code away ...
