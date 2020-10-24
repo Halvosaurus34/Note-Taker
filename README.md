@@ -1,80 +1,70 @@
-# Unit 11 Express Homework: Note Taker
+# Note Taker
 
-## Description
+![License](https://img.shields.io/badge/license-MIT-blue.svg "License Badge")
 
-Create an application that can be used to write, save, and delete notes. This application will use an express backend and save and retrieve note data from a JSON file.
+Note Taker is a website that allows you to write, save, and delete personal notes
 
-* The application frontend has already been created, it's your job to build the backend and connect the two.
+## 🏁 Getting started
 
-* The following HTML routes should be created:
+#### Cloning
 
-  * GET `/notes` - Should return the `notes.html` file.
+1. [Fork this repository](https://help.github.com/en/articles/fork-a-repo).
+1. [Clone the forked repository](https://help.github.com/en/articles/cloning-a-repository) locally
+1. Run `npm install` to install dependencies
 
-  * GET `*` - Should return the `index.html` file
+Inside the repository directory, you will find two key folders:
 
-* The application should have a `db.json` file on the backend that will be used to store and retrieve notes using the `fs` module.
+- **[`app`](/app):** contains the JSON database for the notes.
+- **[`public`](/public):** contains the HTML, CSS and script.js files.
 
-* The following API routes should be created:
+## 💥 Issues
 
-  * GET `/api/notes` - Should read the `db.json` file and return all saved notes as JSON.
+The main challenges were figuring out how to manipuate the JSON database without changing the content. I learned alot about express, fs, uuid, json when trying to make this project work.
 
-  * POST `/api/notes` - Should receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client.
+## Contribution:
 
-  * DELETE `/api/notes/:id` - Should receive a query parameter containing the id of a note to delete. This means you'll need to find a way to give each note a unique `id` when it's saved. In order to delete a note, you'll need to read all notes from the `db.json` file, remove the note with the given `id` property, and then rewrite the notes to the `db.json` file.
+[Code of Conduct](./CODE_OF_CONDUCT.md)
 
-## User Story
+## 👌 Collaborators
 
-AS A user, I want to be able to write and save notes
+With instruction from [Filipe Laborde-Basto](https://github.com/c0dehot) and [Daniel Cabellos](https://github.com/shibeknight)
 
-I WANT to be able to delete notes I've written before
+## License:
 
-SO THAT I can organize my thoughts and keep track of tasks I need to complete
+For more information about the license, click on the link below.
 
-## Business Context
+- [License](https://choosealicense.com/licenses/mit/)
 
-For users that need to keep track of a lot of information, it's easy to forget or be unable to recall something important. Being able to take persistent notes allows users to have written information available when needed.
+## ❔ Questions:
 
-## Acceptance Criteria
+For questions about this project you can go to my GitHub page at the following link:
 
-Application should allow users to create and save notes.
+- [GitHub Profile](https://github.com/Halvosaurus34)
 
-Application should allow users to view previously saved notes.
+For additional questions please reach out to me at: lhalvorson34@gmail.com.
 
-Application should allow users to delete previously saved notes.
+---
 
-## Deploying the App
+## Links
 
-You will not be able to deploy your server side code on GitHub pages. This app should be deployed on Heroku. Carefully follow the [Heroku Guide](../04-Important/HerokuGuide.md) for getting your app deployed on Heroku.
+[Deployed Note Taker Website](https://powerful-citadel-42030.herokuapp.com/)
 
-- - -
+---
 
-## Commit Early and Often
+[Note Taker GitHub Repository](https://github.com/Halvosaurus34/Note-Taker)
 
-One of the most important skills to master as a web developer is version control. Building the habit of committing via Git is important for two reasons:
+---
 
-* Your commit history is a signal to employers that you are actively working on projects and learning new skills.
+I used [Express](https://www.npmjs.com/package/express), [UUID](https://www.npmjs.com/package/uuid), [fs](https://www.w3schools.com/nodejs/nodejs_filesystem.asp) to build this web app.
 
-* Your commit history allows you to revert your codebase in the event that you need to return to a previous state.
+---
 
-Follow these guidelines for committing:
+## 👀 Screenshots
 
-* Make single-purpose commits for related changes to ensure a clean, manageable history. If you are fixing two issues, make two commits.
+![Website Screenshot](./public/assets/screenshot.PNG)
 
-* Write descriptive, meaningful commit messages so that you and anyone else looking at your repository can easily understand its history.
+---
 
-* Don't commit half-done work, for the sake of your collaborators (and your future self!).
+![Website Screenshot](./public/assets/indexscreenshot.PNG)
 
-* Test your application before you commit to ensure functionality at every step in the development process.
-
-We would like you to have well over 200 commits by graduation, so commit early and often!
-
-## Submission on BCS
-
-You are required to submit the following:
-
-* The URL of the deployed application. This should be the link to the url provided by Heroku. Be sure not to submit a link to the Heroku dashboard.
-
-* The URL of the GitHub repository
-
-- - -
-© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+---
