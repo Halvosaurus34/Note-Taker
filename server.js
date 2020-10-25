@@ -16,15 +16,13 @@ let id = 0;
 let noteList = [
   { id: "0000-0000-0000-0000", title: "note1", text: "note1 text" },
 ];
-
-// Endpoints =================================================
+//retreive note array from JSON database
 app.get("/api/notes", async function (req, res) {
   console.log("getting data...");
   res.send(readNoteList);
 });
-
+//create a note and add to JSON file
 app.post("/api/notes", async function (req, res) {
-  // ... code ... ?
   class NewNote {
     constructor(id, title, text) {
       this.id = id;
@@ -42,7 +40,7 @@ app.post("/api/notes", async function (req, res) {
   console.log("Successfully added new note...");
   res.send({ message: "added note..." });
 });
-
+//delete note and rewrite that to JSON file
 app.delete("/api/notes/:id", async function (req, res) {
   //   console.log("DELETED NOTE REQUEST ID: ", req.params.id);
   let result = readNoteList.map(function (el) {
@@ -57,11 +55,7 @@ app.delete("/api/notes/:id", async function (req, res) {
   });
   res.send({ message: "deleted" });
 });
-// you will need to create 3 endpoints here, and it should work magically :)
-// note: for app.post: newNote.id = uuid.v4() // use a random unique id.
-// ... code away ...
 
-// Listener ==================================================
 app.listen(PORT, function () {
   console.log(`Serving notes on PORT ${PORT}, http://localhost:${PORT}`);
 });
