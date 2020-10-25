@@ -12,15 +12,16 @@ app.use(express.json());
 
 const dbFile = "./app/db.json";
 let readNoteList = JSON.parse(fs.readFileSync(dbFile, "utf8"));
-let id = 0;
 let noteList = [
   { id: "0000-0000-0000-0000", title: "note1", text: "note1 text" },
 ];
+
 //retreive note array from JSON database
 app.get("/api/notes", async function (req, res) {
   console.log("getting data...");
   res.send(readNoteList);
 });
+
 //create a note and add to JSON file
 app.post("/api/notes", async function (req, res) {
   class NewNote {
@@ -40,6 +41,7 @@ app.post("/api/notes", async function (req, res) {
   console.log("Successfully added new note...");
   res.send({ message: "added note..." });
 });
+
 //delete note and rewrite that to JSON file
 app.delete("/api/notes/:id", async function (req, res) {
   //   console.log("DELETED NOTE REQUEST ID: ", req.params.id);
